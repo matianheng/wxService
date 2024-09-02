@@ -20,7 +20,7 @@ Page({
             value: '1'
         }, {
             text: '女',
-            value: '0'
+            value: '2'
         }],
         inputNickName: "",
         inputMobile: "",
@@ -275,7 +275,7 @@ Page({
             mobile: data.mobile,
             mobileValue: data.mobileValue,
             nickName:data.nickName=="去填写"?"":data.nickName,
-            sex:data.sex=="去填写"?"":(data.sex=="男"?"1":"0"),
+            sex:data.sex=="去填写"?"":(data.sex=="男"?"1":"2"),
 
         }, 'POST').then(res => {
             if (res.errno === 0) {
@@ -295,7 +295,6 @@ Page({
      */
     onReady() {
         console.log(wx.getStorageSync('userInfo'));
-        debugger
         this.setData({
             "userInfo.birthday":wx.getStorageSync('userInfo').birthday,
             "userInfo.nickName":wx.getStorageSync('userInfo').nickName,
