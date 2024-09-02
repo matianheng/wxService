@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.linlinjava.litemall.db.dao.LitemallHeadPtureMapper">
+  <resultMap id="BaseResultMap" type="org.linlinjava.litemall.db.domain.HeadPtureVo">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="falg" jdbcType="VARCHAR" property="falg" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+  </resultMap>
+  <!--  <sql id="Base_Column_List">-->
+<!--    id, `name`, falg, url-->
+<!--  </sql>-->
+
+    <update id="updateUserInfo" parameterType="org.linlinjava.litemall.db.domain.LitemallHeadPtureVo">
+      update litemall_user
+      <set>
+        <if test="nickName != null and  nickName != ''">
+          nickname = #{nickName,jdbcType=VARCHAR},
+        </if>
+        <if test="headUrl != null and  headUrl != ''">
+          avatar = #{headUrl,jdbcType=VARCHAR},
+        </if>
+        <if test="sex != null and  sex != ''">
+          gender = #{sex,jdbcType=VARCHAR},
+        </if>
+        <if test="mobile != null and  mobile != ''">
+          mobile = #{mobile,jdbcType=VARCHAR},
+        </if>
+        <if test="birthday != null and  birthday != ''">
+          birthday = #{birthday,jdbcType=VARCHAR},
+        </if>
+      </set>
+      where id = #{id,jdbcType=INTEGER}
+    </update>
+
+  <select id="getHeadPture"  resultMap="BaseResultMap">
+    select
+    id,name,falg,url
+<!--    <include refid="Base_Column_List" />-->
+    from litemall_head_sculpture
+  </select>
+<!--  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">-->
+<!--    delete from litemall_head_sculpture-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </delete>-->
+<!--  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="org.linlinjava.litemall.db.domain.LitemallHeadSculpture" useGeneratedKeys="true">-->
+<!--    insert into litemall_head_sculpture (`name`, falg, url-->
+<!--      )-->
+<!--    values (#{name,jdbcType=VARCHAR}, #{falg,jdbcType=VARCHAR}, #{url,jdbcType=VARCHAR}-->
+<!--      )-->
+<!--  </insert>-->
+<!--  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="org.linlinjava.litemall.db.domain.LitemallHeadSculpture" useGeneratedKeys="true">-->
+<!--    insert into litemall_head_sculpture-->
+<!--    <trim prefix="(" suffix=")" suffixOverrides=",">-->
+<!--      <if test="name != null">-->
+<!--        `name`,-->
+<!--      </if>-->
+<!--      <if test="falg != null">-->
+<!--        falg,-->
+<!--      </if>-->
+<!--      <if test="url != null">-->
+<!--        url,-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--    <trim prefix="values (" suffix=")" suffixOverrides=",">-->
+<!--      <if test="name != null">-->
+<!--        #{name,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="falg != null">-->
+<!--        #{falg,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="url != null">-->
+<!--        #{url,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </trim>-->
+<!--  </insert>-->
+<!--  <update id="updateByPrimaryKeySelective" parameterType="org.linlinjava.litemall.db.domain.LitemallHeadSculpture">-->
+<!--    update litemall_head_sculpture-->
+<!--    <set>-->
+<!--      <if test="name != null">-->
+<!--        `name` = #{name,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="falg != null">-->
+<!--        falg = #{falg,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--      <if test="url != null">-->
+<!--        url = #{url,jdbcType=VARCHAR},-->
+<!--      </if>-->
+<!--    </set>-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </update>-->
+<!--  <update id="updateByPrimaryKey" parameterType="org.linlinjava.litemall.db.domain.LitemallHeadSculpture">-->
+<!--    update litemall_head_sculpture-->
+<!--    set `name` = #{name,jdbcType=VARCHAR},-->
+<!--      falg = #{falg,jdbcType=VARCHAR},-->
+<!--      url = #{url,jdbcType=VARCHAR}-->
+<!--    where id = #{id,jdbcType=INTEGER}-->
+<!--  </update>-->
+</mapper>

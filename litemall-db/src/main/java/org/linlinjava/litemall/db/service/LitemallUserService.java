@@ -1,24 +1,34 @@
 package org.linlinjava.litemall.db.service;
 
 import com.github.pagehelper.PageHelper;
+import org.linlinjava.litemall.db.dao.LitemallHeadPtureMapper;
 import org.linlinjava.litemall.db.dao.LitemallUserMapper;
-import org.linlinjava.litemall.db.domain.LitemallUser;
-import org.linlinjava.litemall.db.domain.LitemallUserExample;
-import org.linlinjava.litemall.db.domain.UserVo;
+import org.linlinjava.litemall.db.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class LitemallUserService {
     @Resource
     private LitemallUserMapper userMapper;
+    @Resource
+    private LitemallHeadPtureMapper headPture;
 
     public LitemallUser findById(Integer userId) {
         return userMapper.selectByPrimaryKey(userId);
+    }
+
+    /**
+     * 获取预存头像图片
+     * @return
+     */
+    public ArrayList<HeadPtureVo> getHeadPture() {
+        return headPture.getHeadPture();
     }
 
     public UserVo findUserVoById(Integer userId) {
@@ -99,5 +109,11 @@ public class LitemallUserService {
 
     public void deleteById(Integer id) {
         userMapper.logicalDeleteByPrimaryKey(id);
+    }
+
+    public void updateUserInfo(LitemallHeadPtureVo body) {
+        System.out.println("------------");
+        System.out.println(body);
+        headPture.updateUserInfo(body);
     }
 }
