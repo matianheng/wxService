@@ -8,6 +8,24 @@ public class UserInfo {
     private String city;
     private String language;
     private Byte gender;
+    private String mobile;
+    private String birthday;
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 
     public String getCountry() {
         return country;

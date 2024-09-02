@@ -12,6 +12,8 @@ import org.linlinjava.litemall.core.util.JacksonUtil;
 import org.linlinjava.litemall.core.util.RegexUtil;
 import org.linlinjava.litemall.core.util.ResponseUtil;
 import org.linlinjava.litemall.core.util.bcrypt.BCryptPasswordEncoder;
+import org.linlinjava.litemall.db.domain.HeadPtureVo;
+import org.linlinjava.litemall.db.domain.LitemallHeadPtureVo;
 import org.linlinjava.litemall.db.domain.LitemallUser;
 import org.linlinjava.litemall.db.service.CouponAssignService;
 import org.linlinjava.litemall.db.service.LitemallUserService;
@@ -28,7 +30,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -137,12 +141,13 @@ public class WxAuthController {
         }
 
         LitemallUser user = userService.queryByOid(openId);
+
         if (user == null) {
             user = new LitemallUser();
             user.setUsername(openId);
             user.setPassword(openId);
             user.setWeixinOpenid(openId);
-            user.setAvatar(userInfo.getAvatarUrl());
+            user.setAvatar( userInfo.getAvatarUrl());
             user.setNickname(userInfo.getNickName());
             user.setGender(userInfo.getGender());
             user.setUserLevel((byte) 0);
@@ -150,6 +155,7 @@ public class WxAuthController {
             user.setLastLoginTime(LocalDateTime.now());
             user.setLastLoginIp(IpUtil.getIpAddr(request));
             user.setSessionKey(sessionKey);
+
 
             userService.add(user);
 
@@ -169,6 +175,24 @@ public class WxAuthController {
 
         Map<Object, Object> result = new HashMap<Object, Object>();
         result.put("token", token);
+//        String results = user.getMobile().replaceAll("(\\d{3})\\d{4}(\\d{4})", "$1****$2");
+       // userInfo.setMobile(results);
+        if(user.getMobile()!=""){
+            userInfo.setMobile(user.getMobile());
+        }
+        if(user.getAvatar()!=""){
+            userInfo.setAvatarUrl(user.getAvatar());
+        }
+        if(user.getGender()!=null){
+            userInfo.setGender(user.getGender());
+        }
+        if(user.getNickname()!=""){
+            userInfo.setNickName(user.getNickname());
+        }
+        if(user.getBirthday()!=null){
+            userInfo.setBirthday(user.getBirthday().toString());
+        }
+        System.out.println(userInfo);
         result.put("userInfo", userInfo);
         return ResponseUtil.ok(result);
     }
@@ -555,5 +579,68 @@ public class WxAuthController {
         data.put("mobile", user.getMobile());
 
         return ResponseUtil.ok(data);
+    }
+
+    @PostMapping("getHeadPture")
+    public Object getHeadPture() {
+      ArrayList<HeadPtureVo> user = userService.getHeadPture();
+        Map<Object, Object> data = new HashMap<Object, Object>();
+        ArrayList list  = new ArrayList();
+        for(int i = 0; i< user.size();i++) {
+            HeadPtureVo item = user.get(i);
+            list.add(item);
+           // System.out.println(item.getFalg());
+        }
+        return ResponseUtil.ok(list);
+    }
+
+    /**
+     * 更新用户详细信息
+     * @param body
+     * @param request
+     * @return
+     */
+    @PostMapping("updateUserInfoPture")
+    public Object updateUserInfoPture(@LoginUser Integer userId, @RequestBody LitemallHeadPtureVo body, HttpServletRequest request) {
+//        System.out.println(userId);
+//        System.out.println("00000000000000");
+//        System.out.println(body);
+//        System.out.println("11111111111111111111");
+//        System.out.println(request);
+//        System.out.println("2222222222");
+        body.setId(userId);
+        userService.updateUserInfo(body);
+
+//        String password = JacksonUtil.parseString(body, "password");
+//        String mobile = JacksonUtil.parseString(body, "mobile");
+//        String code = JacksonUtil.parseString(body, "code");
+
+//        if (mobile == null || code == null || password == null) {
+//            return ResponseUtil.badArgument();
+//        }
+
+//        //判断验证码是否正确
+//        String cacheCode = CaptchaCodeManager.getCachedCaptcha(mobile);
+//        if (cacheCode == null || cacheCode.isEmpty() || !cacheCode.equals(code))
+//            return ResponseUtil.fail(AUTH_CAPTCHA_UNMATCH, "验证码错误");
+//
+//        List<LitemallUser> userList = userService.queryByMobile(mobile);
+//        LitemallUser user = null;
+//        if (userList.size() > 1) {
+//            return ResponseUtil.fail(AUTH_MOBILE_REGISTERED, "手机号已注册");
+//        }
+//        user = userService.findById(userId);
+//
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+//        if (!encoder.matches(password, user.getPassword())) {
+//            return ResponseUtil.fail(AUTH_INVALID_ACCOUNT, "账号密码不对");
+//        }
+//
+//        user.setMobile(mobile);
+//        if (userService.updateById(user) == 0) {
+//            return ResponseUtil.updatedDataFailed();
+//        }
+
+        return ResponseUtil.ok();
     }
 }
