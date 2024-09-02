@@ -1,0 +1,125 @@
+<view class="container">
+    <van-cell custom-class="custom-class1" center title="头像" is-link bind:click="showHeadPopup">
+        <van-image round fit="fill" width="3rem" height="3rem" src="{{userInfo.headUrl}}" />
+    </van-cell>
+    <van-cell custom-class="custom-class1" center value="{{userInfo.nickName}}" is-link bind:click="showNickNamePopup">
+        <view slot="title">
+            <view class="van-cell-text">昵称</view>
+        </view>
+    </van-cell>
+    <van-cell custom-class="custom-class1" center value="{{userInfo.sex}}" is-link bind:click="showSexPopup">
+        <view slot="title">
+            <view class="van-cell-text">性别</view>
+            <van-tag custom-class="custom-class" text-color="#000" color="#fff">优化您在购物过程中的商品推荐逻辑，如两性用品等</van-tag>
+        </view>
+    </van-cell>
+    <van-cell value-class="value-class" custom-class="custom-class1" bind:click="showBirthDayPopup" center value="{{userInfo.birthday}}" is-link>
+        <view slot="title">
+            <view class="van-cell-text">生日</view>
+            <van-tag  custom-class="custom-class2" text-color="#000" color="#fff">正确填写用于当天的惊喜(如烘焙劵等)</van-tag>
+        </view>
+    </van-cell>
+    <van-cell custom-class="custom-class1" center value="{{userInfo.mobile}}" is-link bind:click="showMobile">
+        <view slot="title">
+            <view class="van-cell-text">手机号</view>
+        </view>
+    </van-cell>
+    <van-popup show="{{ showHead }}" round position="bottom" custom-style="height:40%" bind:close="onCloseHead" custom-class="popup">
+        <view class="popup_view_row">
+            <van-row custom-class="popup_row">
+                <van-col span="24">选择头像</van-col>
+            </van-row>
+        </view>
+        <view class="view_scroll">
+            <scroll-view scroll-y="true" scroll-left="{{scrollLeft}}" class="scroll-view-horizontal">
+                <van-grid clickable border="{{ false }}" column-num="3" class="custom-grid">
+                    <van-grid-item use-slot wx:for="{{userInfo.headList}}" wx:for-item="item" wx:key="id" class="custom-grid-item">
+                        <van-image round fit="fill" width="4rem" height="4rem" src="{{item.url}}" />
+                        <van-radio-group value="{{ selectHead }}" bind:change="onChangeSelectHead">
+                            <van-radio  name="{{item.url}}">{{item.name}}</van-radio>
+                        </van-radio-group>
+                    </van-grid-item>
+                </van-grid>
+                <view class="scroll-view-horizontal_view"></view>
+            </scroll-view>
+        </view>
+        <van-button bind:click="defineHead" custom-class="popup_button" type="primary" block>确定</van-button>
+    </van-popup>
+    <van-popup show="{{ showNickName }}" round position="bottom" custom-style="height:40%" bind:close="onCloseNickName" custom-class="popup">
+        <view class="popup_view_row">
+            <van-row custom-class="popup_row">
+                <van-col span="24">填写昵称</van-col>
+            </van-row>
+        </view>
+        <view class="view_scroll">
+            <van-cell-group>
+                <van-field value="{{ userInfo.nickName }}" placeholder="请输入用户名" border="{{ false }}" bind:focus="clickInputNickName" 
+                bind:blur="clickInputNickName1"/>
+            </van-cell-group>
+        </view>
+        <van-button bind:click="defineNickName" custom-class="popup_button" type="primary" block>确定</van-button>
+    </van-popup>
+    <van-popup show="{{ showBirthday }}" round position="bottom" custom-style="height:50%" bind:close="onCloseBirthDay" custom-class="popup">
+        <view class="popup_view_row">
+            <van-row custom-class="popup_row">
+                <van-col span="24">填写生日</van-col>
+            </van-row>
+        </view>
+        <view class="view_scroll">
+            <van-cell-group>
+                <van-datetime-picker
+                    type="date"
+                    value="{{ userInfo.birthday }}"
+                    bind:confirm="onInput"
+                    min-date="{{ minDate }}"
+                    />
+            </van-cell-group>
+        </view>
+        <!-- <van-button bind:click="defineBirthDay" custom-class="popup_button" type="primary" block>确定</van-button> -->
+    </van-popup>
+    <van-popup show="{{ showSex }}" round position="bottom" custom-style="height:40%" bind:close="onCloseSex" custom-class="popup">
+        <view class="view_scroll">
+            <van-cell-group>
+                <van-picker  bind:cancel="onCancel"
+                             bind:confirm="onConfirm" 
+                             title="选择性别" show-toolbar   
+                             columns="{{ columns }}"  bind:change="onChange" />
+            </van-cell-group>
+        </view>
+    </van-popup>
+    <van-popup show="{{ showMobile }}" round position="bottom" custom-style="height:40%" bind:close="onCloseMobile" custom-class="popup">
+        <view class="popup_view_row">
+            <van-row custom-class="popup_row">
+                <van-col span="24">填写昵称</van-col>
+            </van-row>
+        </view>
+        <view class="view_scroll">
+            <van-cell-group>
+                <van-field
+                    value="{{ userInfo.mobile }}"
+                    center
+                    clearable
+                    label="手机号"
+                    placeholder="请输入手机号"
+                    border="{{ false }}"
+                    bind:focus="clickInputMobile" 
+                    bind:blur="clickInputMobile1"
+                    use-button-slot
+                >
+                    <van-button slot="button" size="small" type="primary">
+                    发送验证码
+                    </van-button>
+                </van-field>
+            </van-cell-group>
+            <van-cell-group>
+                <van-field
+                    value="{{ mobileValue }}"
+                    placeholder="请输短信验证码"
+                    border="{{ false }}"
+                />
+                </van-cell-group>
+        </view>
+        <van-button bind:click="defineMobile" custom-class="popup_button" type="primary" block>确定</van-button>
+    </van-popup>
+ 
+</view>

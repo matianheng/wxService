@@ -74,6 +74,25 @@ Page({
       });
     }
   },
+  setInfo() {
+    if (this.data.hasLogin) {
+      try {
+        wx.setStorageSync('tab', 0);
+      } catch (e) {
+
+      }
+      wx.navigateTo({
+        url: "/pages/ucenter/setInfo/setInfo"
+      });
+      wx.setNavigationBarTitle({
+        title:"用户信息"
+      })
+    } else {
+      wx.navigateTo({
+        url: "/pages/auth/login/login"
+      });
+    }
+  },
   goOrderIndex(e) {
     if (this.data.hasLogin) {
       let tab = e.currentTarget.dataset.index
@@ -162,6 +181,7 @@ Page({
     };
   },
   bindPhoneNumber: function(e) {
+      debugger
     if (e.detail.errMsg !== "getPhoneNumber:ok") {
       // 拒绝授权
       return;
@@ -175,7 +195,7 @@ Page({
       });
       return;
     }
-
+    
     util.request(api.AuthBindPhone, {
       iv: e.detail.iv,
       encryptedData: e.detail.encryptedData

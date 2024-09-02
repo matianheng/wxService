@@ -3,11 +3,13 @@
     <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
     <view class="info">
       <text class="name">{{userInfo.nickName}}</text>
+      <text class="mobile">{{userInfo.mobile}}</text>
+    </view>
+    <view class="setInfo">
+        <van-icon name="arrow"   bindtap='setInfo'/>
     </view>
   </view>
-
   <view class='separate'></view>
-
   <view class='user_area'>
     <view class='user_row' bindtap='goOrder'>
       <view class='user_row_left'>我的订单</view>
