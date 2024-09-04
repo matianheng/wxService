@@ -268,6 +268,14 @@ Page({
     },
 
     submintUserInfo(data,msg){
+        let userInfos = wx.getStorageSync('userInfo');
+            userInfos.birthday = data.birthday;
+            userInfos.nickName= data.nickName;
+            userInfos.gender= data.sex;
+            userInfos.mobile= data.mobile;
+            userInfos.avatarUrl= data.headUrl;
+            wx.setStorageSync('userInfo', userInfos);
+
       //调取接口将头像更新到用户信息(使用用户详细信息)
         util.request(api.AuthUpdateUserInfoPture, {
             birthday:data.birthday=="去填写"?"":data.birthday,
@@ -302,7 +310,6 @@ Page({
             "userInfo.mobile": wx.getStorageSync('userInfo').mobile,
             "userInfo.headUrl": wx.getStorageSync('userInfo').avatarUrl,
         })
- 
     },
 
     /**
