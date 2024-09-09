@@ -46,9 +46,9 @@
 
   <view class='separate'></view>
 
-  <view class='user_row'>
+  <!-- <view class='user_row'>
     <view class='user_row_left'>核心服务</view>
-  </view>
+  </view> -->
   <view class='user_column'>
 
     <view class='user_column_item' bindtap='goCoupon'>
@@ -75,9 +75,9 @@
   </view>
   <view class='separate'></view>
 
-  <view class='user_row'>
+  <!-- <view class='user_row'>
     <view class='user_row_left'>必备工具</view>
-  </view>
+  </view> -->
   <view class='user_column'>
 
     <button class="user_column_item_phone" open-type="getPhoneNumber" bindgetphonenumber="bindPhoneNumber">
@@ -104,6 +104,26 @@
     </view>
   </view>
   <view class='separate'></view>
-
-  <view class="logout" wx:if="{{hasLogin}}" bindtap="exitLogin">退出登录</view>
+  <view class='user_row'>
+    <view class='user_row_left'>个性推荐</view>
+  </view>
+  <view class="a-section a-new" wx:if="{{newGoods.length > 0}}">
+        <view class="h">
+            <view>
+                <navigator url="../newGoods/newGoods">
+                    <text class="txt">周一周四 · 新品首发</text>
+                </navigator>
+            </view>
+        </view>
+        <view class="b">
+            <view class="item" wx:for="{{newGoods}}" wx:for-index="index" wx:for-item="item" wx:key="id">
+                <navigator url="../goods/goods?id={{item.id}}">
+                    <image class="img" src="{{item.picUrl}}" background-size="cover"></image>
+                    <text class="name">{{item.name}}</text>
+                    <text class="price">￥{{item.retailPrice}}</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+  <!-- <view class="logout" wx:if="{{hasLogin}}" bindtap="exitLogin">退出登录</view> -->
 </view>

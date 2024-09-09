@@ -24,6 +24,8 @@
             <view class="van-cell-text">手机号</view>
         </view>
     </van-cell>
+    <view class="logout" wx:if="{{hasLogin}}" bindtap="exitLogin">退出登录</view>
+    
     <van-popup show="{{ showHead }}" round position="bottom" custom-style="height:40%" bind:close="onCloseHead" custom-class="popup">
         <view class="popup_view_row">
             <van-row custom-class="popup_row">
@@ -69,9 +71,10 @@
             <van-cell-group>
                 <van-datetime-picker
                     type="date"
-                    value="{{ userInfo.birthday }}"
+                    value="{{ userInfo.birthdayValue }}"
                     bind:confirm="onInput"
                     min-date="{{ minDate }}"
+     
                     />
             </van-cell-group>
         </view>
@@ -121,5 +124,5 @@
         </view>
         <van-button bind:click="defineMobile" custom-class="popup_button" type="primary" block>确定</van-button>
     </van-popup>
- 
+    
 </view>

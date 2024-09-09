@@ -49,8 +49,10 @@
     "enablePullDownRefresh": false,
     "navigationBarTextStyle": "black",
     "backgroundColor": "#FFFFFF",
-    "backgroundTextStyle": "dark"
+    "backgroundTextStyle": "dark",
+    "disableScroll":false
   },
+  
   "tabBar": {
     "backgroundColor": "#fafafa",
     "borderStyle": "white",
@@ -109,7 +111,9 @@
     "van-grid-item": "./lib/vant-weapp/grid-item/index",
     "van-datetime-picker": "./lib/vant-weapp/datetime-picker/index",
     "van-radio": "./lib/vant-weapp/radio/index",
-     "van-radio-group": "./lib/vant-weapp/radio-group/index"
+     "van-radio-group": "./lib/vant-weapp/radio-group/index",
+     "van-dialog": "./lib/vant-weapp/dialog/index",
+     "van-overlay": "./lib/vant-weapp/overlay/index"
   },
   "sitemapLocation": "sitemap.json"
 }

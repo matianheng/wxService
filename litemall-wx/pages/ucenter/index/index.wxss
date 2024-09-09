@@ -166,3 +166,102 @@ page {
 .setInfo{
     
 }
+.a-section {
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+    color: #333;
+    margin-top: 20rpx;
+  }
+  
+  .a-section .h {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    height: 130rpx;
+  }
+  
+  .a-section .h .txt {
+    padding-right: 30rpx;
+    background-size: 16.656rpx 27rpx;
+    display: inline-block;
+    height: 36rpx;
+    font-size: 33rpx;
+    line-height: 36rpx;
+  }
+  .a-new .b .item {
+    float: left;
+    width: 302rpx;
+    margin-top: 10rpx;
+    margin-left: 21rpx;
+    margin-right: 21rpx;
+  }
+  
+ 
+  .a-new .b .img {
+    width: 302rpx;
+    height: 302rpx;
+  }
+  
+  .a-new .b .name {
+    text-align: center;
+    display: block;
+    width: 302rpx;
+    height: 35rpx;
+    margin-bottom: 14rpx;
+    overflow: hidden;
+    font-size: 30rpx;
+    color: #333;
+  }  
+  
+  .a-new .b .price {
+    display: block;
+    text-align: center;
+    line-height: 30rpx;
+    font-size: 30rpx;
+    color: #ab956d;
+  }
+ 
+  .a-new .b {
+    width: 750rpx;
+    height: auto;
+    overflow: hidden;
+    padding: 0 31rpx 45rpx 31rpx;
+  }
+  
+ 
+ 
+ 
+ 
+  
+ 
+  
+ 
+  
+ 
+  
+ 
+ 
+  
+  
+  
+ 
+  
+ 
+ 
+  
+ 
+ 
+ 
+  
+ 
+ 
+ 
+
+ 
+  
+ 
+  
+ 

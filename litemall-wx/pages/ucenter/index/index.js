@@ -5,6 +5,7 @@ var app = getApp();
 
 Page({
   data: {
+    newGoods:[],
     userInfo: {
       nickName: '点击登录',
       avatarUrl: '/static/images/my.png'
@@ -21,7 +22,7 @@ Page({
     // 页面初始化 options为页面跳转所带来的参数
   },
   onReady: function() {
-
+    this.getIndexData();
   },
   onShow: function() {
 
@@ -250,5 +251,16 @@ Page({
       }
     })
 
-  }
+  },
+  getIndexData: function() {
+    let that = this;
+    util.request(api.IndexUrl).then(function(res) {
+      if (res.errno === 0) {
+        that.setData({
+          newGoods: res.data.newGoodsList,
+
+        });
+      }
+    });
+  },
 })

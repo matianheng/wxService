@@ -7,6 +7,7 @@ const app = getApp();
 
 Page({
   data: {
+    overlayShow:false,
     newGoods: [],
     hotGoods: [],
     topics: [],
@@ -113,6 +114,12 @@ Page({
   },
   onReady: function() {
     // 页面渲染完成
+    let _this = this;
+     setTimeout(function(){
+        _this.setData({ overlayShow: true });
+     },)
+       
+    
   },
   onShow: function() {
     // 页面显示
@@ -138,4 +145,12 @@ Page({
       }
     })
   },
+  onClickShow() {
+    this.setData({ overlayShow: true });
+  },
+
+  onClickHide() {
+    this.setData({ overlayShow: false });
+  },
+  noop() {},
 })

@@ -72,4 +72,15 @@
  .value-class{
      width: 10rem !important;
  }
+ .logout {
+    margin-top: 30rpx;
+    height: 100rpx;
+    width: 100%;
+    line-height: 100rpx;
+    text-align: center;
+    background: #fff;
+    color: red;
+    font-size: 30rpx;
+    border-bottom: rgb(231, 231, 231) solid 1rpx;
+  }
  

@@ -8,6 +8,7 @@ Page({
      * 页面的初始数据
      */
     data: {
+        hasLogin: true,
         showHead: false,
         showNickName: false,
         showBirthday: false,
@@ -29,6 +30,7 @@ Page({
             nickName: "去填写",
             sex: "去填写",
             birthday: "去填写",
+            birthdayValue: "",
             mobile: "",
             mobileValue: "",
             headList: [{
@@ -178,7 +180,7 @@ Page({
         // 提取年份、月份和日期
         const year = date.getUTCFullYear();
         const month = String(date.getUTCMonth() + 1).padStart(2, '0'); // 月份从0开始，需要加1
-        const day = String(date.getUTCDate()).padStart(2, '0');
+        const day = String(date.getUTCDate()+1).padStart(2, '0');
 
         // 组合成 yyyy-mm-dd 格式
         const formattedDate = `${year}-${month}-${day}`;
@@ -305,6 +307,7 @@ Page({
         console.log(wx.getStorageSync('userInfo'));
         this.setData({
             "userInfo.birthday":wx.getStorageSync('userInfo').birthday,
+            "userInfo.birthdayValue": new Date(wx.getStorageSync('userInfo').birthday).getTime(),
             "userInfo.nickName":wx.getStorageSync('userInfo').nickName,
             "userInfo.sex": wx.getStorageSync('userInfo').gender =="1"?"男":"女",
             "userInfo.mobile": wx.getStorageSync('userInfo').mobile,
@@ -352,5 +355,26 @@ Page({
      */
     onShareAppMessage() {
 
-    }
+    },
+    exitLogin: function() {
+        wx.showModal({
+          title: '',
+          confirmColor: '#b4282d',
+          content: '退出登录？',
+          success: function(res) {
+            if (!res.confirm) {
+              return;
+            }
+    
+            util.request(api.AuthLogout, {}, 'POST');
+            app.globalData.hasLogin = false;
+            wx.removeStorageSync('token');
+            wx.removeStorageSync('userInfo');
+            wx.reLaunch({
+              url: '/pages/index/index'
+            });
+          }
+        })
+    
+      }
 })
