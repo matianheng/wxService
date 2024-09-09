@@ -1,0 +1,5 @@
+<sjs src="../wxs/utils.sjs" module="utils" />
+
+<view class="custom-class {{ border ? 'van-hairline--top-bottom' : '' }} {{ utils.bem('tabbar', { fixed, safe: safeAreaInsetBottom }) }}" style="{{ zIndex ? 'z-index: ' + zIndex : '' }}">
+  <slot />
+</view>

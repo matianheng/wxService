@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>抖音小程序搬家日志</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/custom.css">
+    <script src="./js/data.js"></script>
+    <script src="./js/index.js"></script>
+</head>
+
+<body>
+    <div class="container is-widescreen mt-5">
+        <article class="panel">
+            <p class="panel-heading">转换报告 </p>
+            <div class="column">
+                <table class="table is-bordered is-striped is-fullwidth custom-table" id="info">
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+        <article class="panel">
+            <p class="panel-heading">转换详情</p>
+            <div class="column">
+                <div class="tabs" id="detail-tabs">
+                    <ul>
+                        <li class="is-active"><a data-tag="ttml">TTML</a></li>
+                        <li><a data-tag="ttss">TTSS</a></li>
+                        <li><a data-tag="javascript">JAVASCRIPT</a></li>
+                        <li><a data-tag="json">JSON</a></li>
+                    </ul>
+                </div>
+                <div class="detail-tab-content">
+                    <div class="detail-tab-content-panel" id="ttml">
+                        <table class="table is-bordered is-fullwidth is-hoverable custom-table">
+                            <thead class="custom-thead">
+                                <tr>
+                                    <th>文件路径</th>
+                                    <th class="custom-cell-6 has-text-centered">转换结果</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="detail-tab-content-panel is-hidden" id="ttss">
+                        <table class="table is-bordered is-fullwidth is-hoverable custom-table">
+                            <thead class="custom-thead">
+                                <tr>
+                                    <th>文件路径</th>
+                                    <th class="custom-cell-6 has-text-centered">转换结果</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="detail-tab-content-panel is-hidden" id="javascript">
+                        <table class="table is-bordered is-fullwidth is-hoverable custom-table">
+                            <thead class="custom-thead">
+                                <tr>
+                                    <th>文件路径</th>
+                                    <th class="custom-cell-6 has-text-centered">转换结果</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="detail-tab-content-panel is-hidden" id="json">
+                        <table class="table is-bordered is-fullwidth is-hoverable custom-table">
+                            <thead class="custom-thead">
+                                <tr>
+                                    <th>文件路径</th>
+                                    <th class="custom-cell-6 has-text-centered">转换结果</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+    <div id="modal-js-example" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">转换详情</p>
+                <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="columns">
+                    <div class="column is-2">文件</div>
+                    <div class="column file"></div>
+                </div>
+                <div id="modal-content">
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

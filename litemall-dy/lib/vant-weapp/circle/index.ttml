@@ -1,0 +1,7 @@
+<view class="van-circle">
+  <canvas class="van-circle__canvas" style="{{ style }}" canvas-id="van-circle"></canvas>
+  <view tt:if="{{ !text }}" class="van-circle__text">
+    <slot></slot>
+  </view>
+  <view tt:else class="van-circle__text">{{ text }}</view>
+</view>

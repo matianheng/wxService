@@ -1,0 +1,34 @@
+table.custom-table thead.custom-thead {
+  background-color: #fafafa;
+}
+
+table.custom-table .custom-cell-10 {
+  width: 10rem;
+}
+
+table.custom-table .custom-cell-6 {
+  width: 6rem;
+}
+
+.container {
+  min-width: 960px;
+}
+
+.red-text {
+  color: #ef2e55;
+}
+
+.detail-tab-content {
+  height: 30rem;
+  overflow: auto;
+}
+
+#modal-content {
+  height: 12rem;
+  overflow: auto;
+}
+
+.modal-card-body {
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}

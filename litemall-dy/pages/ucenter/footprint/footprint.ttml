@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="no-footprint" tt:if="{{footprintList.length <= 0}}">
+    <view class="c">
+      <text>没有浏览足迹</text>
+    </view>
+  </view>
+  <view class="footprint" tt:if="{{footprintList.length > 0}}">
+    <view class="day-item" tt:for="{{footprintList}}" tt:key="*this" tt:for-index="index">
+      <view class="day-hd" tt:if="{{item.length > 0}}">{{item[0].addDate}}</view>
+      <view class="day-list" tt:if="{{item.length > 0}}">
+        <view class="item" data-index="{{index}}" data-iindex="{{iindex}}" bindtouchstart="touchStart" bindtouchend="touchEnd" bindtap="deleteItem" tt:for="{{item}}" tt:for-index="iindex" tt:for-item="iitem" tt:key="id">
+          <image class="img" src="{{iitem.picUrl}}"></image>
+          <view class="info">
+            <view class="name">{{iitem.name}}</view>
+            <view class="subtitle">{{iitem.brief}}</view>
+            <view class="price">￥{{iitem.retailPrice}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

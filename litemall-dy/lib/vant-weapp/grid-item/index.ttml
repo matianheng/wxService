@@ -1,0 +1,19 @@
+<sjs src="../wxs/utils.sjs" module="utils" />
+
+<view class="{{ utils.bem('grid-item', { square }) }}" style="{{ style }}" bindtap="onClick">
+  <view class="{{ utils.bem('grid-item__content', { center, square, clickable, surround: border && gutter }) }} {{ border ? 'van-hairline--surround' : '' }}" style="{{ contentStyle }}">
+    <block tt:if="{{ useSlot }}">
+      <slot />
+    </block>
+    <block tt:else>
+      <view class="van-grid-item__icon">
+        <van-icon tt:if="{{ icon }}" name="{{ icon }}" dot="{{ dot }}" info="{{ info }}" />
+        <slot tt:else name="icon"></slot>
+      </view>
+      <view class="van-grid-item__text">
+        <text tt:if="{{ text }}">{{ text }}</text>
+        <slot tt:else name="text"></slot>
+      </view>
+    </block>
+  </view>
+</view>

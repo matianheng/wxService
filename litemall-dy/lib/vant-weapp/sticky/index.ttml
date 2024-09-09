@@ -1,0 +1,7 @@
+<sjs src="../wxs/utils.sjs" module="utils" />
+
+<view class="custom-class van-sticky" style="{{ containerStyle }}">
+  <view class="{{ utils.bem('sticky-wrap', { fixed }) }}" style="{{ wrapStyle }}">
+    <slot />
+  </view>
+</view>
