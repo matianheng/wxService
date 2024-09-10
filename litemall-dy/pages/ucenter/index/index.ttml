@@ -6,7 +6,9 @@
       <text class="mobile">{{userInfo.mobile}}</text>
     </view>
     <view class="setInfo">
-        <van-icon name="arrow" bindtap='setInfo' />
+      
+        <van-icon name="arrow" bindtap='setInfo' >11</van-icon>
+
     </view>
   </view>
   <view class='separate'></view>

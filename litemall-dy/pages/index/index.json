@@ -1,1 +1,11 @@
-{"navigationBarTitleText":"首页","enablePullDownRefresh":true}
+{
+    "navigationBarTitleText": "首页",
+    "enablePullDownRefresh": true,
+    "usingComponents": {
+        "van-overlay": "../../lib/vant-weapp/overlay/index",
+        "van-dialog": "../../lib/vant-weapp/dialog/index",
+        "van-icon": "../../lib/vant-weapp/icon/index",
+        "van-image": "../../lib/vant-weapp/image/index"
+        
+    }
+}
