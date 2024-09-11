@@ -1,10 +1,5 @@
 <!-- index.wxml -->
 <view class="container">
-    <van-overlay :show="{{true}}" @click="show = false">
-        <div class="wrapper" @click.stop>
-        111111
-        </div>
-      </van-overlay>
     <view class="search">
         <navigator url="/pages/search/search" class="input">
             <van-icon name="search" />
@@ -200,4 +195,12 @@
             <view class="txt">{{'更多'+item.name+'好物 >'}}</view>
         </navigator>
     </view>
+    <van-overlay lock-scroll="false" show="{{ overlayShow }}" bind:click="onClickHide">
+        <view class="wrapper">
+            <view class="block" catch:tap="noop">
+                <van-image width="300" height="500" src="https://img2.baidu.com/it/u=4218516302,2408300574&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=693" />
+                <van-icon bind:click="onClickHide" size="2rem" color="#fff" name="close" />
+            </view>
+        </view>
+    </van-overlay>
 </view>
