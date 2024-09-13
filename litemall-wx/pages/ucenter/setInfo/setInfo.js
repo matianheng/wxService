@@ -273,7 +273,7 @@ Page({
         let userInfos = wx.getStorageSync('userInfo');
             userInfos.birthday = data.birthday;
             userInfos.nickName= data.nickName;
-            userInfos.gender= data.sex;
+            userInfos.gender= data.sex=="男"?"1":"2";
             userInfos.mobile= data.mobile;
             userInfos.avatarUrl= data.headUrl;
             wx.setStorageSync('userInfo', userInfos);

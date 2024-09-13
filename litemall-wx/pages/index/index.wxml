@@ -16,7 +16,7 @@
             <block wx:else>
                 <image src="{{item.url}}" background-size="cover"></image>
             </block>
-        </swiper-item>
+        </swiper-item> 
     </swiper>
     <view class="m-menu">
         <navigator class="item" url="/pages/category/category?id={{item.id}}" wx:for="{{channel}}" wx:key="id">
