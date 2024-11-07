@@ -7,16 +7,33 @@ spring:
     multipart:
       max-file-size: 20MB
       max-request-size: 20MB
+  datasource:
+    druid:
+      url:  jdbc:mysql://47.97.87.227:3307/litemall?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false
+      driver-class-name:  com.mysql.cj.jdbc.Driver
+      username:  root_litemall
+      password:  Longshine01
+      initial-size:  10
+      max-active:  50
+      min-idle:  10
+      max-wait:  60000
+      pool-prepared-statements:  true
+      max-pool-prepared-statement-per-connection-size:  20
+      validation-query:  SELECT 1 FROM DUAL
+      test-on-borrow:  false
+      test-on-return:  false
+      test-while-idle:  true
+      time-between-eviction-runs-millis:  60000
+      filters:  stat,wall
+  server:
+    port: 8080
+    compression:
+      enabled: true
+      min-response-size: 2048
+      mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain
 
-server:
-  port: 8080
-  compression:
-    enabled: true
-    min-response-size: 2048
-    mime-types: application/javascript,text/css,application/json,application/xml,text/html,text/xml,text/plain
+  logging:
+    config: classpath:logback-spring.xml
 
-logging:
-  config: classpath:logback-spring.xml
-
-swagger:
-  production: false
+  swagger:
+    production: false

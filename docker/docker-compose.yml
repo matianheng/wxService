@@ -1,21 +1,41 @@
+#version: '3'
+#services:
+#  mysql57:
+#    image: mysql:5.7
+#    container_name: 47.97.87.227
+#    ports:
+#      - "3306:3306"
+#    command:
+#      --character-set-server=utf8
+#      --collation-server=utf8_general_ci
+#      --default-authentication-plugin=mysql_native_password
+#    volumes:
+#      - ./db/conf.d:/etc/mysql/conf.d
+#      - ./db/data:/var/lib/mysql
+#      - ./db/init-sql:/docker-entrypoint-initdb.d
+#    environment:
+#      MYSQL_ROOT_PASSWORD: Longshine01
+#    restart: always
+#  litemall:
+#    build:
+#      context: litemall
+#      dockerfile: Dockerfile
+#    container_name: litemall
+#    ports:
+#      - "8080:8080"
+#    volumes:
+#      - ./litemall/storage:/storage
+#      - ./litemall/logs:/logs
+#      - ./litemall/backup:/backup
+#      - /etc/localtime:/etc/localtime
+#    environment:
+#      - TZ=Asia/Shanghai
+#    depends_on:
+#      - mysql57
+#    restart: always
+
 version: '3'
 services:
-  mysql57:
-    image: mysql:5.7
-    container_name: mysql
-    ports:
-      - "3306:3306"
-    command:
-      --character-set-server=utf8
-      --collation-server=utf8_general_ci
-      --default-authentication-plugin=mysql_native_password
-    volumes:
-      - ./db/conf.d:/etc/mysql/conf.d
-      - ./db/data:/var/lib/mysql
-      - ./db/init-sql:/docker-entrypoint-initdb.d
-    environment:
-      MYSQL_ROOT_PASSWORD: litemall123456
-    restart: always
   litemall:
     build:
       context: litemall
@@ -30,6 +50,10 @@ services:
       - /etc/localtime:/etc/localtime
     environment:
       - TZ=Asia/Shanghai
-    depends_on:
-      - mysql57
+      # 外部数据库连接配置
+      - DB_HOST=47.97.87.227        # 外部数据库的 IP 地址
+      - DB_PORT=3307                # 外部数据库的端口
+      - DB_USERNAME=root_litemall   # 外部数据库的用户名
+      - DB_PASSWORD=Longshine01    # 外部数据库的密码（请替换为实际密码）
+      - DB_NAME=litemall            # 要连接的数据库名称
     restart: always

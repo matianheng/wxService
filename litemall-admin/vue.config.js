@@ -31,10 +31,11 @@ module.exports = {
   devServer: {
     proxy: {
       '/admin': {
-        target: 'http://localhost:8080'
+        // target: 'http://localhost:8080'
+        target: 'http://47.97.87.227:8080'
       },
     },
-    port: port,
+  //  port: port,
     open: true,
     overlay: {
       warnings: false,
